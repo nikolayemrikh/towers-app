@@ -28,7 +28,7 @@ node_modules
 **/dist
 **/tsconfig.tsbuildinfo
 # @TODO ВРЕМЕННО
-**/__generated__
+# **/__generated__
 # Supabase
 
 packages/supabase/.branches
