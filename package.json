@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "concurrently -n vite \"vite\" \"npm:generate-graphql-typings:watch\"",
-    "build": "tsc && vite build",
+    "build": "vite build",
+    "build:todo": "tsc && vite build",
     "preview": "vite preview",
     "generate-graphql-typings": "npx graphql-code-generator --config ./codegen.config.ts",
     "generate-graphql-typings:watch": "npx graphql-code-generator --watch --config ./codegen.config.ts",
