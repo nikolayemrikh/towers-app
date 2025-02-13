@@ -1,6 +1,6 @@
 FROM nginx:1.27-alpine AS base
 
-FROM node:18.17-alpine AS build
+FROM node:22.14-alpine AS build
 
 WORKDIR /src
 COPY /package.json /package-lock.json ./

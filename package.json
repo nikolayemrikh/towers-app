@@ -33,5 +33,13 @@
     "vite": "5.0.12",
     "vite-plugin-checker": "0.6.4",
     "vite-plugin-svgr": "4.2.0"
+  },
+  "engines": {
+    "node": "22.14.0",
+    "npm": "10.9.2"
+  },
+  "volta": {
+    "node": "22.14.0",
+    "npm": "10.9.2"
   }
 }
