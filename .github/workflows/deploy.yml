@@ -17,12 +17,12 @@ jobs:
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
+          password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
       - name: Build and push Frontend image
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/app:latest .
-          docker push ${{ secrets.DOCKER_USERNAME }}/app:latest
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/towers-app:latest .
+          docker push ${{ secrets.DOCKER_USERNAME }}/towers-app:latest
 
       - name: Deploy to server
         uses: appleboy/ssh-action@v0.1.10
@@ -31,6 +31,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/app:latest
+            docker pull ${{ secrets.DOCKER_USERNAME }}/towers-app:latest
             cd /opt/docker-compose
-            docker compose up -d --force-recreate app
+            docker compose up -d --force-recreate towers-app
