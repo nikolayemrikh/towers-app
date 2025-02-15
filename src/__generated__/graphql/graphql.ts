@@ -945,6 +945,7 @@ export type Card_In_Board_Opened = Node & {
   board?: Maybe<Board>;
   board_id?: Maybe<Scalars['BigInt']['output']>;
   card_number: Scalars['Int']['output'];
+  card_variant?: Maybe<Card_Variant>;
   created_at: Scalars['Datetime']['output'];
   id: Scalars['BigInt']['output'];
   /** Globally Unique Record Identifier */
@@ -1203,6 +1204,7 @@ export type Card_Variant = Node & {
   boardCollection?: Maybe<BoardConnection>;
   card_in_board_deckCollection?: Maybe<Card_In_Board_DeckConnection>;
   card_in_board_discard_deckCollection?: Maybe<Card_In_Board_Discard_DeckConnection>;
+  card_in_board_openedCollection?: Maybe<Card_In_Board_OpenedConnection>;
   card_in_towerCollection?: Maybe<Card_In_TowerConnection>;
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
@@ -1241,6 +1243,17 @@ export type Card_VariantCard_In_Board_Discard_DeckCollectionArgs = {
   last?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_Discard_DeckOrderBy>>;
+};
+
+
+export type Card_VariantCard_In_Board_OpenedCollectionArgs = {
+  after?: InputMaybe<Scalars['Cursor']['input']>;
+  before?: InputMaybe<Scalars['Cursor']['input']>;
+  filter?: InputMaybe<Card_In_Board_OpenedFilter>;
+  first?: InputMaybe<Scalars['Int']['input']>;
+  last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<Card_In_Board_OpenedOrderBy>>;
 };
 
 

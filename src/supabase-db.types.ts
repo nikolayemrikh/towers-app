@@ -172,6 +172,13 @@ export type Database = {
             referencedRelation: "board"
             referencedColumns: ["id"]
           },
+          {
+            foreignKeyName: "card_in_board_opened_card_number_fkey"
+            columns: ["card_number"]
+            isOneToOne: false
+            referencedRelation: "card_variant"
+            referencedColumns: ["number"]
+          },
         ]
       }
       card_in_tower: {
