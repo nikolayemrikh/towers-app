@@ -8,6 +8,7 @@ RUN npm ci
 
 COPY . .
 RUN npm run build
+RUN npx supabase gen types --lang typescript --project-id rxukcfirznwuguwfavgu > src/supabase-db.types.ts
 
 FROM base AS final
 

@@ -4,13 +4,14 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -n vite \"vite\" \"npm:generate-graphql-typings:watch\"",
+    "dev": "npm run ln-supabase-folder && npm run supabase:gen:types:local && concurrently -n vite \"vite\" \"npm:generate-graphql-typings:watch\"",
     "build": "vite build",
     "build:todo": "tsc && vite build",
     "preview": "vite preview",
+    "ln-supabase-folder": "ln -s -f -h ../backend/supabase ./supabase",
     "generate-graphql-typings": "npx graphql-code-generator --config ./codegen.config.ts",
     "generate-graphql-typings:watch": "npx graphql-code-generator --watch --config ./codegen.config.ts",
-    "supabase:gen:types": "npx supabase gen types typescript --project-id rxukcfirznwuguwfavgu > src/supabase-db.types.ts"
+    "supabase:gen:types:local": "npx supabase gen types --lang typescript --local  > src/supabase-db.types.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.39.3",

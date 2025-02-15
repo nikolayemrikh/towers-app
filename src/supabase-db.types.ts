@@ -7,6 +7,31 @@ export type Json =
   | Json[]
 
 export type Database = {
+  graphql_public: {
+    Tables: {
+      [_ in never]: never
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      graphql: {
+        Args: {
+          operationName?: string
+          query?: string
+          variables?: Json
+          extensions?: Json
+        }
+        Returns: Json
+      }
+    }
+    Enums: {
+      [_ in never]: never
+    }
+    CompositeTypes: {
+      [_ in never]: never
+    }
+  }
   public: {
     Tables: {
       board: {
@@ -120,24 +145,56 @@ export type Database = {
           },
         ]
       }
+      card_in_board_opened: {
+        Row: {
+          board_id: number | null
+          card_number: number
+          created_at: string
+          id: number
+        }
+        Insert: {
+          board_id?: number | null
+          card_number: number
+          created_at?: string
+          id?: number
+        }
+        Update: {
+          board_id?: number | null
+          card_number?: number
+          created_at?: string
+          id?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "card_in_board_opened_board_id_fkey"
+            columns: ["board_id"]
+            isOneToOne: false
+            referencedRelation: "board"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       card_in_tower: {
         Row: {
           card_number: number
           card_tower_id: number
           created_at: string
           id: number
+          is_protected: boolean
         }
         Insert: {
           card_number: number
           card_tower_id: number
           created_at?: string
           id?: number
+          is_protected?: boolean
         }
         Update: {
           card_number?: number
           card_tower_id?: number
           created_at?: string
           id?: number
+          is_protected?: boolean
         }
         Relationships: [
           {
@@ -338,3 +395,4 @@ export type CompositeTypes<
   : PublicCompositeTypeNameOrOptions extends keyof PublicSchema["CompositeTypes"]
     ? PublicSchema["CompositeTypes"][PublicCompositeTypeNameOrOptions]
     : never
+

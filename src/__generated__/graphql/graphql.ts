@@ -20,7 +20,7 @@ export type Scalars = {
   BigInt: { input: string; output: string; }
   /** An opaque string using for tracking a position in results during pagination */
   Cursor: { input: any; output: any; }
-  /** A date wihout time information */
+  /** A date without time information */
   Date: { input: string; output: string; }
   /** A date and time */
   Datetime: { input: string; output: string; }
@@ -46,6 +46,15 @@ export type BigFloatFilter = {
   neq?: InputMaybe<Scalars['BigFloat']['input']>;
 };
 
+/** Boolean expression comparing fields on type "BigFloatList" */
+export type BigFloatListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['BigFloat']['input']>>;
+  contains?: InputMaybe<Array<Scalars['BigFloat']['input']>>;
+  eq?: InputMaybe<Array<Scalars['BigFloat']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['BigFloat']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "BigInt" */
 export type BigIntFilter = {
   eq?: InputMaybe<Scalars['BigInt']['input']>;
@@ -58,10 +67,28 @@ export type BigIntFilter = {
   neq?: InputMaybe<Scalars['BigInt']['input']>;
 };
 
+/** Boolean expression comparing fields on type "BigIntList" */
+export type BigIntListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  contains?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  eq?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['BigInt']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "Boolean" */
 export type BooleanFilter = {
   eq?: InputMaybe<Scalars['Boolean']['input']>;
   is?: InputMaybe<FilterIs>;
+};
+
+/** Boolean expression comparing fields on type "BooleanList" */
+export type BooleanListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Boolean']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Boolean']['input']>>;
 };
 
 /** Boolean expression comparing fields on type "Date" */
@@ -76,6 +103,15 @@ export type DateFilter = {
   neq?: InputMaybe<Scalars['Date']['input']>;
 };
 
+/** Boolean expression comparing fields on type "DateList" */
+export type DateListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Date']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Date']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Date']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Date']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "Datetime" */
 export type DatetimeFilter = {
   eq?: InputMaybe<Scalars['Datetime']['input']>;
@@ -86,6 +122,15 @@ export type DatetimeFilter = {
   lt?: InputMaybe<Scalars['Datetime']['input']>;
   lte?: InputMaybe<Scalars['Datetime']['input']>;
   neq?: InputMaybe<Scalars['Datetime']['input']>;
+};
+
+/** Boolean expression comparing fields on type "DatetimeList" */
+export type DatetimeListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Datetime']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Datetime']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Datetime']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Datetime']['input']>>;
 };
 
 export enum FilterIs {
@@ -105,6 +150,15 @@ export type FloatFilter = {
   neq?: InputMaybe<Scalars['Float']['input']>;
 };
 
+/** Boolean expression comparing fields on type "FloatList" */
+export type FloatListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Float']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Float']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Float']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Float']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "ID" */
 export type IdFilter = {
   eq?: InputMaybe<Scalars['ID']['input']>;
@@ -120,6 +174,15 @@ export type IntFilter = {
   lt?: InputMaybe<Scalars['Int']['input']>;
   lte?: InputMaybe<Scalars['Int']['input']>;
   neq?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** Boolean expression comparing fields on type "IntList" */
+export type IntListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Int']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Int']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Int']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Int']['input']>>;
 };
 
 /** The root type for creating and mutating data */
@@ -424,6 +487,7 @@ export type QueryBoardCollectionArgs = {
   filter?: InputMaybe<BoardFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<BoardOrderBy>>;
 };
 
@@ -435,6 +499,7 @@ export type QueryCard_In_Board_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_DeckOrderBy>>;
 };
 
@@ -446,6 +511,7 @@ export type QueryCard_In_Board_Discard_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_Discard_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_Discard_DeckOrderBy>>;
 };
 
@@ -457,6 +523,7 @@ export type QueryCard_In_Board_OpenedCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_OpenedFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_OpenedOrderBy>>;
 };
 
@@ -468,6 +535,7 @@ export type QueryCard_In_TowerCollectionArgs = {
   filter?: InputMaybe<Card_In_TowerFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_TowerOrderBy>>;
 };
 
@@ -479,6 +547,7 @@ export type QueryCard_TowerCollectionArgs = {
   filter?: InputMaybe<Card_TowerFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_TowerOrderBy>>;
 };
 
@@ -490,6 +559,7 @@ export type QueryCard_VariantCollectionArgs = {
   filter?: InputMaybe<Card_VariantFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_VariantOrderBy>>;
 };
 
@@ -507,6 +577,7 @@ export type QueryUser_In_LobbyCollectionArgs = {
   filter?: InputMaybe<User_In_LobbyFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<User_In_LobbyOrderBy>>;
 };
 
@@ -527,6 +598,15 @@ export type StringFilter = {
   startsWith?: InputMaybe<Scalars['String']['input']>;
 };
 
+/** Boolean expression comparing fields on type "StringList" */
+export type StringListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['String']['input']>>;
+  contains?: InputMaybe<Array<Scalars['String']['input']>>;
+  eq?: InputMaybe<Array<Scalars['String']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['String']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "Time" */
 export type TimeFilter = {
   eq?: InputMaybe<Scalars['Time']['input']>;
@@ -539,12 +619,30 @@ export type TimeFilter = {
   neq?: InputMaybe<Scalars['Time']['input']>;
 };
 
+/** Boolean expression comparing fields on type "TimeList" */
+export type TimeListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['Time']['input']>>;
+  contains?: InputMaybe<Array<Scalars['Time']['input']>>;
+  eq?: InputMaybe<Array<Scalars['Time']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['Time']['input']>>;
+};
+
 /** Boolean expression comparing fields on type "UUID" */
 export type UuidFilter = {
   eq?: InputMaybe<Scalars['UUID']['input']>;
   in?: InputMaybe<Array<Scalars['UUID']['input']>>;
   is?: InputMaybe<FilterIs>;
   neq?: InputMaybe<Scalars['UUID']['input']>;
+};
+
+/** Boolean expression comparing fields on type "UUIDList" */
+export type UuidListFilter = {
+  containedBy?: InputMaybe<Array<Scalars['UUID']['input']>>;
+  contains?: InputMaybe<Array<Scalars['UUID']['input']>>;
+  eq?: InputMaybe<Array<Scalars['UUID']['input']>>;
+  is?: InputMaybe<FilterIs>;
+  overlaps?: InputMaybe<Array<Scalars['UUID']['input']>>;
 };
 
 export type Board = Node & {
@@ -570,6 +668,7 @@ export type BoardCard_In_Board_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_DeckOrderBy>>;
 };
 
@@ -580,6 +679,7 @@ export type BoardCard_In_Board_Discard_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_Discard_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_Discard_DeckOrderBy>>;
 };
 
@@ -590,6 +690,7 @@ export type BoardCard_In_Board_OpenedCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_OpenedFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_OpenedOrderBy>>;
 };
 
@@ -600,6 +701,7 @@ export type BoardCard_TowerCollectionArgs = {
   filter?: InputMaybe<Card_TowerFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_TowerOrderBy>>;
 };
 
@@ -681,7 +783,7 @@ export type Card_In_Board_Deck = Node & {
   board?: Maybe<Board>;
   board_id?: Maybe<Scalars['BigInt']['output']>;
   card_number: Scalars['Int']['output'];
-  card_variant: Card_Variant;
+  card_variant?: Maybe<Card_Variant>;
   created_at: Scalars['Datetime']['output'];
   id: Scalars['BigInt']['output'];
   /** Globally Unique Record Identifier */
@@ -692,8 +794,6 @@ export type Card_In_Board_DeckConnection = {
   __typename?: 'card_in_board_deckConnection';
   edges: Array<Card_In_Board_DeckEdge>;
   pageInfo: PageInfo;
-  /** The total number of records matching the `filter` criteria */
-  totalCount: Scalars['Int']['output'];
 };
 
 export type Card_In_Board_DeckDeleteResponse = {
@@ -761,10 +861,10 @@ export type Card_In_Board_DeckUpdateResponse = {
 
 export type Card_In_Board_Discard_Deck = Node & {
   __typename?: 'card_in_board_discard_deck';
-  board: Board;
+  board?: Maybe<Board>;
   board_id: Scalars['BigInt']['output'];
   card_number: Scalars['Int']['output'];
-  card_variant: Card_Variant;
+  card_variant?: Maybe<Card_Variant>;
   created_at: Scalars['Datetime']['output'];
   id: Scalars['BigInt']['output'];
   /** Globally Unique Record Identifier */
@@ -845,7 +945,6 @@ export type Card_In_Board_Opened = Node & {
   board?: Maybe<Board>;
   board_id?: Maybe<Scalars['BigInt']['output']>;
   card_number: Scalars['Int']['output'];
-  card_variant: Card_Variant;
   created_at: Scalars['Datetime']['output'];
   id: Scalars['BigInt']['output'];
   /** Globally Unique Record Identifier */
@@ -924,9 +1023,9 @@ export type Card_In_Board_OpenedUpdateResponse = {
 export type Card_In_Tower = Node & {
   __typename?: 'card_in_tower';
   card_number: Scalars['Int']['output'];
-  card_tower: Card_Tower;
+  card_tower?: Maybe<Card_Tower>;
   card_tower_id: Scalars['BigInt']['output'];
-  card_variant: Card_Variant;
+  card_variant?: Maybe<Card_Variant>;
   created_at: Scalars['Datetime']['output'];
   id: Scalars['BigInt']['output'];
   is_protected: Scalars['Boolean']['output'];
@@ -1009,7 +1108,7 @@ export type Card_In_TowerUpdateResponse = {
 
 export type Card_Tower = Node & {
   __typename?: 'card_tower';
-  board: Board;
+  board?: Maybe<Board>;
   board_id: Scalars['BigInt']['output'];
   card_in_towerCollection?: Maybe<Card_In_TowerConnection>;
   created_at: Scalars['Datetime']['output'];
@@ -1026,6 +1125,7 @@ export type Card_TowerCard_In_TowerCollectionArgs = {
   filter?: InputMaybe<Card_In_TowerFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_TowerOrderBy>>;
 };
 
@@ -1103,7 +1203,6 @@ export type Card_Variant = Node & {
   boardCollection?: Maybe<BoardConnection>;
   card_in_board_deckCollection?: Maybe<Card_In_Board_DeckConnection>;
   card_in_board_discard_deckCollection?: Maybe<Card_In_Board_Discard_DeckConnection>;
-  card_in_board_openedCollection?: Maybe<Card_In_Board_OpenedConnection>;
   card_in_towerCollection?: Maybe<Card_In_TowerConnection>;
   /** Globally Unique Record Identifier */
   nodeId: Scalars['ID']['output'];
@@ -1118,6 +1217,7 @@ export type Card_VariantBoardCollectionArgs = {
   filter?: InputMaybe<BoardFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<BoardOrderBy>>;
 };
 
@@ -1128,6 +1228,7 @@ export type Card_VariantCard_In_Board_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_DeckOrderBy>>;
 };
 
@@ -1138,17 +1239,8 @@ export type Card_VariantCard_In_Board_Discard_DeckCollectionArgs = {
   filter?: InputMaybe<Card_In_Board_Discard_DeckFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_Board_Discard_DeckOrderBy>>;
-};
-
-
-export type Card_VariantCard_In_Board_OpenedCollectionArgs = {
-  after?: InputMaybe<Scalars['Cursor']['input']>;
-  before?: InputMaybe<Scalars['Cursor']['input']>;
-  filter?: InputMaybe<Card_In_Board_OpenedFilter>;
-  first?: InputMaybe<Scalars['Int']['input']>;
-  last?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<Card_In_Board_OpenedOrderBy>>;
 };
 
 
@@ -1158,6 +1250,7 @@ export type Card_VariantCard_In_TowerCollectionArgs = {
   filter?: InputMaybe<Card_In_TowerFilter>;
   first?: InputMaybe<Scalars['Int']['input']>;
   last?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
   orderBy?: InputMaybe<Array<Card_In_TowerOrderBy>>;
 };
 
@@ -1313,7 +1406,7 @@ export type CardTowersQueryVariables = Exact<{
 }>;
 
 
-export type CardTowersQuery = { __typename: 'Query', card_towerCollection?: { __typename: 'card_towerConnection', edges: Array<{ __typename: 'card_towerEdge', node: { __typename: 'card_tower', id: string, created_at: string, board: { __typename: 'board', id: string, turn_user_id?: string | null, created_at: string } } }> } | null };
+export type CardTowersQuery = { __typename: 'Query', card_towerCollection?: { __typename: 'card_towerConnection', edges: Array<{ __typename: 'card_towerEdge', node: { __typename: 'card_tower', id: string, created_at: string, board?: { __typename: 'board', id: string, turn_user_id?: string | null, created_at: string } | null } }> } | null };
 
 
 export const BoardCollectionDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"boardCollection"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"boardId"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"BigInt"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"boardCollection"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"filter"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"id"},"value":{"kind":"ObjectValue","fields":[{"kind":"ObjectField","name":{"kind":"Name","value":"eq"},"value":{"kind":"Variable","name":{"kind":"Name","value":"boardId"}}}]}}]}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"pulled_card_number_to_change"}},{"kind":"Field","name":{"kind":"Name","value":"opened_card_number_to_use"}},{"kind":"Field","name":{"kind":"Name","value":"turn_user_id"}},{"kind":"Field","name":{"kind":"Name","value":"card_towerCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"user_id"}},{"kind":"Field","name":{"kind":"Name","value":"card_in_towerCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"card_number"}},{"kind":"Field","name":{"kind":"Name","value":"is_protected"}}]}}]}}]}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"card_in_board_deckCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"card_number"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"card_in_board_openedCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"card_number"}}]}}]}}]}},{"kind":"Field","name":{"kind":"Name","value":"card_in_board_discard_deckCollection"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"edges"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"node"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"__typename"}},{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"card_number"}}]}}]}}]}}]}}]}}]}}]}}]} as unknown as DocumentNode<BoardCollectionQuery, BoardCollectionQueryVariables>;
