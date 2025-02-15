@@ -1,12 +1,12 @@
 FROM nginx:1.27-alpine AS base
 
+FROM node:22.14-alpine AS build
+
 ARG VITE_SUPABASE_ANON_KEY
 ARG VITE_SUPABASE_URL
 # special env variables for supabase
 ARG SUPABASE_ACCESS_TOKEN
 ARG SUPABASE_PROJECT_ID
-
-FROM node:22.14-alpine AS build
 
 WORKDIR /src
 COPY /package.json /package-lock.json ./
