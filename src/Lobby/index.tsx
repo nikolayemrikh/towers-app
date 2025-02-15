@@ -87,9 +87,10 @@ export const Lobby: FC = () => {
         <h2>Your boards</h2>
         <div>
           {userBoards?.map(({ node: tower }) => (
-            <div key={tower.board.id}>
-              <Link to={`/board/${tower.board.id}`}>
-                #{tower.board.id} from {new Date(tower.board.created_at).toLocaleString('ru-ru')}
+            // TODO: fix this
+            <div key={tower.board!.id}>
+              <Link to={`/board/${tower.board!.id}`}>
+                #{tower.board!.id} from {new Date(tower.board!.created_at).toLocaleString('ru-ru')}
               </Link>
             </div>
           ))}
