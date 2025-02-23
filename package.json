@@ -12,7 +12,8 @@
     "generate-graphql-typings": "npx graphql-code-generator --config ./codegen.config.ts",
     "generate-graphql-typings:watch": "npx graphql-code-generator --watch --config ./codegen.config.ts",
     "supabase:gen:types:local": "npx supabase gen types --lang typescript --local  > src/supabase-db.types.ts",
-    "fetch-rpc-types": "curl http://localhost:3000/types > src/rpc-types/project.zip && cd src/rpc-types && unzip -o project.zip && rm project.zip"
+    "fetch-rpc-types:local": "curl http://localhost:3000/types > src/rpc-types/project.zip && cd src/rpc-types && unzip -o project.zip && rm project.zip",
+    "fetch-rpc-types": "curl $API_URL > src/rpc-types/project.zip && cd src/rpc-types && unzip -o project.zip && rm project.zip"
   },
   "dependencies": {
     "@supabase/supabase-js": "2.39.3",
