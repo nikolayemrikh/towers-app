@@ -16,6 +16,7 @@ export const createGraphQLClient = (): GraphQLClient => {
         headers: {
           ...req.headers,
           Authorization: `Bearer ${token}`,
+          apikey: import.meta.env.VITE_SUPABASE_ANON_KEY,
         },
       };
     },
