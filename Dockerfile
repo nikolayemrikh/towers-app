@@ -20,7 +20,7 @@ RUN echo "VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}" >> .env
 RUN echo "VITE_SUPABASE_URL=${VITE_SUPABASE_URL}" >> .env
 RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
-RUN npm run fetch-rpc-types
+RUN npm run fetch-rpc-types:prod
 RUN npx supabase gen types --lang typescript --project-id ${SUPABASE_PROJECT_ID} > src/supabase-db.types.ts
 
 RUN npm run build
