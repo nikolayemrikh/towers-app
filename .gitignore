@@ -47,3 +47,5 @@ lerna-debug.log*
 .env.tokens
 
 supabase
+src/rpc-types/*
+!src/rpc-types/.gitkeep

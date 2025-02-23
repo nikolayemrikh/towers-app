@@ -8,6 +8,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthContext } from './context/AuthContext';
 import { Routes } from './Routes';
 import { supabase } from './supabaseClient';
+import { rpc } from './rpc';
 
 const queryClient = new QueryClient();
 
@@ -24,6 +25,9 @@ export const App: FC = () => {
       supabase.auth.onAuthStateChange((_event, session) => {
         setIsAuthenticated(!!session);
       });
+
+      const res = await rpc.test1();
+      console.log(res);
     })();
   }, []);
 
