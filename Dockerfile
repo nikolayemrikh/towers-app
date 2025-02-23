@@ -20,6 +20,7 @@ RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 RUN npm run build
 
 RUN npx supabase gen types --lang typescript --project-id ${SUPABASE_PROJECT_ID} > src/supabase-db.types.ts
+RUN npm run fetch-rpc-types
 
 FROM base AS final
 
