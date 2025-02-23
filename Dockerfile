@@ -20,10 +20,10 @@ RUN echo "VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}" >> .env
 RUN echo "VITE_SUPABASE_URL=${VITE_SUPABASE_URL}" >> .env
 RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
-RUN mkdir -p /src/rpc-types && \
-    curl -v "${VITE_API_URL}/types" > /src/rpc-types/project.zip && \
-    unzip -o /src/rpc-types/project.zip -d /src/rpc-types && \
-    rm /src/rpc-types/project.zip
+RUN mkdir -p src/rpc-types && \
+    curl -v "${VITE_API_URL}/types" > src/rpc-types/project.zip && \
+    unzip -o src/rpc-types/project.zip -d src/rpc-types && \
+    rm src/rpc-types/project.zip
 
 RUN npx supabase gen types --lang typescript --project-id ${SUPABASE_PROJECT_ID} > src/supabase-db.types.ts
 
