@@ -2,6 +2,8 @@ FROM nginx:1.27-alpine AS base
 
 FROM node:22.14-alpine AS build
 
+RUN apk add curl
+
 ARG VITE_SUPABASE_ANON_KEY
 ARG VITE_SUPABASE_URL
 ARG VITE_API_URL
