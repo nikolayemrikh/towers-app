@@ -22,7 +22,7 @@ RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
 RUN echo "Downloading from: ${VITE_API_URL}"
 RUN mkdir -p src/rpc-types && \
-    curl -v -f -L "${VITE_API_URL}" -o src/rpc-types/project.zip && \
+    curl -v -f -L "${VITE_API_URL}/types" -o src/rpc-types/project.zip && \
     cd src/rpc-types && \
     unzip -o project.zip && \
     rm project.zip
