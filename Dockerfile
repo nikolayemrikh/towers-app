@@ -2,7 +2,7 @@ FROM nginx:1.27-alpine AS base
 
 FROM node:22.14-alpine AS build
 
-RUN apk add --no-cache curl
+RUN apk add curl
 
 ARG VITE_SUPABASE_ANON_KEY
 ARG VITE_SUPABASE_URL
@@ -20,12 +20,7 @@ RUN echo "VITE_SUPABASE_ANON_KEY=${VITE_SUPABASE_ANON_KEY}" >> .env
 RUN echo "VITE_SUPABASE_URL=${VITE_SUPABASE_URL}" >> .env
 RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
-RUN echo "Downloading from: ${VITE_API_URL}"
-RUN mkdir -p src/rpc-types && \
-    curl -v -f -L "${VITE_API_URL}/types" -o src/rpc-types/project.zip && \
-    cd src/rpc-types && \
-    unzip -o project.zip && \
-    rm project.zip
+RUN npm run fetch-rpc-types:prod
 RUN npx supabase gen types --lang typescript --project-id ${SUPABASE_PROJECT_ID} > src/supabase-db.types.ts
 
 RUN npm run build
