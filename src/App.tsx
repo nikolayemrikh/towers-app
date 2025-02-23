@@ -25,7 +25,6 @@ export const App: FC = () => {
       supabase.auth.onAuthStateChange((_event, session) => {
         setIsAuthenticated(!!session);
       });
-
       const res = await rpc.test1();
       console.log(res);
     })();
