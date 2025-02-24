@@ -2,7 +2,7 @@ FROM nginx:1.27-alpine AS base
 
 FROM node:22.14-alpine AS build
 
-RUN apk add --no-cache curl unzip
+RUN apk add --no-cache curl unzip ca-certificates
 
 ARG VITE_SUPABASE_ANON_KEY
 ARG VITE_SUPABASE_URL
@@ -21,7 +21,7 @@ RUN echo "VITE_SUPABASE_URL=${VITE_SUPABASE_URL}" >> .env
 RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
 RUN mkdir -p src/rpc-types && \
-    curl -v "${VITE_API_URL}/types" > project.zip && \
+    curl -L -k --fail "${VITE_API_URL}/types" -o project.zip && \
     unzip -o project.zip -d src/rpc-types && \
     rm project.zip
 
