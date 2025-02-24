@@ -21,7 +21,7 @@ RUN echo "VITE_SUPABASE_URL=${VITE_SUPABASE_URL}" >> .env
 RUN echo "VITE_API_URL=${VITE_API_URL}" >> .env
 
 RUN mkdir -p src/rpc-types && \
-    curl --fail "${VITE_API_URL}/types" > project.zip && \
+    curl -L -k --fail "${VITE_API_URL}/types" -o project.zip && \
     unzip -o project.zip -d src/rpc-types && \
     rm project.zip
 
