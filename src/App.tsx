@@ -5,10 +5,14 @@ import { BrowserRouter } from 'react-router-dom';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import { AuthContext } from './context/AuthContext';
+import { CssBaseline, Stack } from '@mui/material';
 import { Routes } from './Routes';
-import { supabase } from './supabaseClient';
+import { AuthContext } from './context/AuthContext';
+import { ThemeModeSettingContextProviderWrapper } from './core/theme/ThemeModeSettingContextProviderWrapper';
+import { ThemeProvider } from './core/theme/ThemeProvider';
+import { MIN_WIDTH } from './core/theme/constants';
 import { rpc } from './rpc';
+import { supabase } from './supabaseClient';
 
 const queryClient = new QueryClient();
 
@@ -33,9 +37,16 @@ export const App: FC = () => {
   return (
     <StrictMode>
       <QueryClientProvider client={queryClient}>
-        <AuthContext.Provider value={{ isAuthenticated }}>
-          <BrowserRouter>{isInitialized && <Routes />}</BrowserRouter>
-        </AuthContext.Provider>
+        <ThemeModeSettingContextProviderWrapper>
+          <ThemeProvider>
+            <AuthContext.Provider value={{ isAuthenticated }}>
+              <CssBaseline enableColorScheme />
+              <Stack height="100%" minWidth={MIN_WIDTH}>
+                <BrowserRouter>{isInitialized && <Routes />}</BrowserRouter>
+              </Stack>
+            </AuthContext.Provider>
+          </ThemeProvider>
+        </ThemeModeSettingContextProviderWrapper>
       </QueryClientProvider>
     </StrictMode>
   );

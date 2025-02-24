@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "npm run ln-supabase-folder && npm run fetch-rpc-types && npm run supabase:gen:types:local && concurrently -n vite \"vite\" \"npm:generate-graphql-typings:watch\"",
+    "dev": "npm run ln-supabase-folder && npm run fetch-rpc-types:local && npm run supabase:gen:types:local && concurrently -n vite \"vite\" \"npm:generate-graphql-typings:watch\"",
     "build": "vite build",
     "build:todo": "tsc && vite build",
     "preview": "vite preview",
@@ -27,8 +27,13 @@
     "typescript": "5.7.3"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@emotion/react": "11.14.0",
+    "@emotion/styled": "11.14.0",
     "@graphql-codegen/cli": "5.0.5",
     "@graphql-codegen/client-preset": "4.6.2",
+    "@mui/icons-material": "6.4.5",
+    "@mui/material": "6.4.5",
     "@nikolayemrikh/rpc-ts-client": "1.0.2",
     "@parcel/watcher": "2.5.1",
     "@types/react": "18.2.51",
@@ -39,7 +44,10 @@
     "supabase": "2.12.1",
     "vite": "5.0.12",
     "vite-plugin-checker": "0.6.4",
-    "vite-plugin-svgr": "4.2.0"
+    "vite-plugin-svgr": "4.2.0",
+    "zod": "3.24.2",
+    "@hookform/resolvers": "4.1.2",
+    "react-hook-form": "7.54.2"
   },
   "engines": {
     "node": "22.14.0",
