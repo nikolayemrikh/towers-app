@@ -51,7 +51,7 @@ export const SignInPage: FC = () => {
 
   return (
     <Stack
-      height="100%"
+      flexGrow={1}
       direction="row"
       justifyContent="center"
       alignItems="center"
