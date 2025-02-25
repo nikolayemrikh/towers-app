@@ -10,6 +10,8 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 
 import { supabase } from '../supabaseClient';
 
+import { PageMain } from '@app/components/PageMain';
+import { Button, Stack, Typography } from '@mui/material';
 import { cardTowersQueryDocument } from './graphql-documents/cardTowersQueryDocument';
 
 const graphqlClient = createGraphQLClient();
@@ -61,42 +63,58 @@ export const Lobby: FC = () => {
   if (!user) return null;
 
   return (
-    <main>
-      <h1>Lobby</h1>
-      <div>Users in lobby: {usersInLobby?.length ?? 0}</div>
-      <div>Me in lobby: {isInLobby ? 'Yes' : 'No'}</div>
-      <div>
-        {isInLobby ? (
-          <button disabled={leaveLobbyMutation.isPending} onClick={() => leaveLobbyMutation.mutate(user)}>
-            Don&apos;t want to play
-          </button>
-        ) : (
-          <button disabled={enterLobbyMutation.isPending} onClick={() => enterLobbyMutation.mutate(user)}>
-            Want to play
-          </button>
-        )}
-      </div>
-      <div>
-        {isInLobby && usersInLobby?.length === 2 && (
-          <button disabled={initializeMutation.isPending} onClick={() => initializeMutation.mutate()}>
-            Start game
-          </button>
-        )}
-      </div>
-      <div>
-        <h2>Your boards</h2>
+    <PageMain>
+      <Stack direction="column" gap={2}>
+        <Typography variant="h1">Lobby</Typography>
+        <Typography variant="body1">Users in lobby: {usersInLobby?.length ?? 0}</Typography>
+        <Typography variant="body1">Me in lobby: {isInLobby ? 'Yes' : 'No'}</Typography>
         <div>
-          {userBoards?.map(({ node: tower }) => (
-            // TODO: fix this
-            <div key={tower.board!.id}>
-              <Link to={`/board/${tower.board!.id}`}>
-                #{tower.board!.id} from {new Date(tower.board!.created_at).toLocaleString('ru-ru')}
-              </Link>
-            </div>
-          ))}
+          {isInLobby ? (
+            <Button
+              variant="contained"
+              disabled={leaveLobbyMutation.isPending}
+              onClick={() => leaveLobbyMutation.mutate(user)}
+            >
+              Don&apos;t want to play
+            </Button>
+          ) : (
+            <Button
+              variant="contained"
+              disabled={enterLobbyMutation.isPending}
+              onClick={() => enterLobbyMutation.mutate(user)}
+            >
+              Want to play
+            </Button>
+          )}
         </div>
-      </div>
-      <button onClick={() => supabase.auth.signOut()}>log out</button>
-    </main>
+        <div>
+          {isInLobby && usersInLobby?.length === 2 && (
+            <Button
+              variant="contained"
+              disabled={initializeMutation.isPending}
+              onClick={() => initializeMutation.mutate()}
+            >
+              Start game
+            </Button>
+          )}
+        </div>
+        <div>
+          <h2>Your boards</h2>
+          <div>
+            {userBoards?.map(({ node: tower }) => (
+              // TODO: fix this
+              <div key={tower.board!.id}>
+                <Link to={`/board/${tower.board!.id}`}>
+                  #{tower.board!.id} from {new Date(tower.board!.created_at).toLocaleString('ru-ru')}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <Button onClick={() => supabase.auth.signOut()}>log out</Button>
+        </div>
+      </Stack>
+    </PageMain>
   );
 };
