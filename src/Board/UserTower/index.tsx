@@ -3,6 +3,8 @@ import { FC, useState } from 'react';
 import { BoardCollectionQuery } from '@app/__generated__/graphql/graphql';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
+import { rpc } from '@app/rpc';
+import { TUseSelectedCardRequest } from '@app/rpc-types/authenticated/use-selected-card/types';
 import { getGraphqlQueryKey } from '../../core/graphql/createGetQueryKet';
 import { supabase } from '../../supabaseClient';
 import { Card } from '../Card';
@@ -39,7 +41,12 @@ export const UserTower: FC<{
   });
 
   const useSelectedCardMutation = useMutation({
-    mutationFn: (payload: any) => supabase.functions.invoke('use-selected-card', { body: payload }),
+    mutationFn: async (payload: TUseSelectedCardRequest) => {
+      const token = (await supabase.auth.getSession()).data.session?.access_token;
+      if (!token) throw new Error('No token');
+      // biome-ignore lint/correctness/useHookAtTopLevel: not a react hook
+      return rpc.authenticated.useSelectedCard(token, payload);
+    },
     onSuccess: () =>
       queryClient.refetchQueries({ queryKey: [getGraphqlQueryKey(boardQueryDocument), boardId], exact: true }),
   });
