@@ -48,5 +48,5 @@ lerna-debug.log*
 
 supabase
 src/rpc-types/*
-!src/rpc-types/.gitkeep
 src/supabase-db.types.ts
+!src/rpc-types/.gitkeep
