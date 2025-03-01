@@ -68,6 +68,7 @@ export const SignInPage: FC = () => {
             <FormControl>
               <FormLabel htmlFor="email">Email</FormLabel>
               <TextField
+                {...form.register('email')}
                 error={form.formState.errors.email != null}
                 helperText={form.formState.errors.email?.message}
                 id="email"
@@ -85,6 +86,7 @@ export const SignInPage: FC = () => {
             <FormControl>
               <FormLabel htmlFor="password">Password</FormLabel>
               <TextField
+                {...form.register('password')}
                 error={form.formState.errors.password != null}
                 helperText={form.formState.errors.password?.message}
                 name="password"
