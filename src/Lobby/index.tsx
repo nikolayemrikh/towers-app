@@ -11,6 +11,7 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { supabase } from '../supabaseClient';
 
 import { PageMain } from '@app/components/PageMain';
+import { rpc } from '@app/rpc';
 import { Button, Stack, Typography } from '@mui/material';
 import { cardTowersQueryDocument } from './graphql-documents/cardTowersQueryDocument';
 
@@ -44,7 +45,11 @@ export const Lobby: FC = () => {
   });
 
   const initializeMutation = useMutation({
-    mutationFn: () => supabase.functions.invoke('initialize-board'),
+    mutationFn: async () => {
+      const token = (await supabase.auth.getSession()).data.session?.access_token;
+      if (!token) throw new Error('No token');
+      return rpc.authenticated.initializeBoard(token);
+    },
     onSuccess: () => refetchUserBoards(),
   });
 
